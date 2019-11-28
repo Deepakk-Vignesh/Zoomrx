@@ -1,0 +1,47 @@
+1. There are 3 ways by which CSS can be integrated with the HTML document.
+they are:
+->Inline
+->Internal
+->External
+
+2.CSS selectors are the set of characters which are used to select the elements that has to be styled.
+
+3.Each element in the HTML are in the form of box.the design and layout of such boxes are called as box model.the elements of box model are:
+->Margin
+->Border
+->Padding
+->Content
+
+4.Pseudo-classes are keywords that are preceded by a colon(':') to represent a state of a particular element.they are used to provide styling for different states for an same element.
+
+5.Important keyword in CSS is used to inform the browser that the specified property must be highly prioritized and must be used in the element.all other same property definition or inherited property for that element is ignored by the browser.
+
+6.Float property defines that an element should be taken out of the normal flow of the document and placed along the left or right side of the block in which it is present.
+
+7."display:none" will hide the whole element and remove that from layout space whereas "visibility:hidden" hides an element but take up the same space as before.
+
+8.The position property of an element defines how the element should be positioned in the webpage.the position properties are:
+->Static(default)
+->Absolute
+->Relative
+->Fixed
+
+9.The z-index property is used to stack up the elements that are positioned with Absolute,Relative,Fixed through the z-axis.
+
+10.CSS measurement units:
+->px
+->em
+->rem
+->percentage
+
+11.The set of rules which are used to select a more specific CSS rule from a set of conflicting CSS rules is CSS specificity.
+
+12.A block-level element always starts on a new line and takes up the full width available while the inline element takes up only required width and does not start a newline.
+-> <span>,<em>,<b> are inline tags
+-> <div>,<nav>,<section> are block level tags
+
+13.The inhertance is applied to CSS by using 'inherit' keyword as a value for the child element's property that has to be inherited from the parent.
+
+14.CSS rules specific to a media is applied using @media rule.
+
+15.CSS transitions allows you to change property values smoothly, over a given duration.
