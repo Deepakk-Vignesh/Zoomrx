@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS Exercises Part-1</title>
+    </head>
+    <body>
+        <h3>Question 1 :=></h3><br>
+            <form name="question1form" id="sectionq1" method="POST">
+                    Enter Size of the Array: <input type="number" name="length">
+                    <input type="button" value="submit" onclick="question1trigger(0);">
+            </form><br><hr>
+            <h3>Question 2 :=></h3><br>
+            <form name="question2form" method="POST">
+                    <input type="text" name="s1" size="30"> + <input type="text" name="s2" size="30">
+                    <input type="button" value="=" onclick="question2trigger();"> 
+                    <span id="sectionq2"></span>
+            </form><br><hr>
+            <h3>Question 3 :=></h3><br>
+            <form name="question3form" method="POST">
+                    A Random Number in Range ( <input type="number" name="low"> , <input type="number" name="high"> ) 
+                    <input type="button" value="=" onclick="question3trigger();"> 
+                    <span id="sectionq3"></span>
+            </form><br><hr>
+            <h3>Question 4 :=></h3><br>
+            The Array : <span id="sectionq4">[2,73,49,3,99,50,7,12,3,6,52,7,1,33,2,42,5,32,21,6]</span><br><br>
+            <input type="button" value="Press this to see the array with values 40 or above!" onclick="question4trigger();"><br><br>
+            <input type="button" value="Press this to see the first value in the array which is 40 or above!" onclick="finder();"><br> <br>
+            <input type="button" value="Press this to see the sorted array" onclick="sorter();"><br><br><br><br><hr>
+            <script src="example.js"></script>
+    </body>
+</html>
