@@ -1,5 +1,3 @@
-let s1="abc";
-let s2="AAA";
 let test=[];
 let n;
 let arr=[];
