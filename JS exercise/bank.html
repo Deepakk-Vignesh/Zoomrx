@@ -1,0 +1,153 @@
+<html>
+	<head>
+		<style>
+			body{
+				margin: 0;
+				background-color: #bbbbbb;
+			}
+			.menu{
+				height: 10%;
+				background-color: floralwhite;
+				padding:10px 10px;
+				box-sizing: border-box;
+				position: relative;
+				z-index: 1;
+				box-shadow:1px 1px 1px black;
+				margin-bottom: 5px;
+				vertical-align: top;
+			}
+			.menubutton{
+				float:right;
+				width: 150px;
+				height: 40px;
+			}
+			.leftPallete{
+				width:30%;
+				overflow: scroll;
+				height:89%;
+				background-color:white;
+				display: inline-block;
+				border-width: 0;
+				box-sizing: border-box;
+				z-index: 1;
+				box-shadow:1px 1px 1px #666666;
+			}
+			.rightPallete{
+				width:69%;
+				height:89%;
+				background-color: white;
+				display: inline-block;
+				border-width:0;
+				box-sizing: border-box;
+				z-index: 1;
+				box-shadow:1px 1px 1px #666666;
+				vertical-align: top;
+				padding: 15px 15px;
+			}
+			.listName{
+				height:5%;
+				width:100%;
+				box-sizing: border-box;
+				padding :4px 4px;
+				text-transform: uppercase;
+			}
+			.listName:hover{
+				background-color: #dddddd;
+				cursor: pointer;
+			}
+			.transferButton{
+				width: 150px;
+				height: 40px;
+			}
+			.logo{
+				float: left;
+				margin: 0;
+			}
+			h4{
+				display:inline-block;
+			}
+			button{
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="menu">
+			<h3 class="logo">ZOOM BANK</h3>
+			<button class="menubutton" onclick="addAccount()">add account</button>
+		</div>
+		<div class="leftPallete">
+			<br>
+			<center id="leftPallete1">
+			</center>
+		</div>
+		<div class="rightPallete" id="rightPallete">
+			
+		</div>
+		<script>
+			var accounts=[{name:"a",cbal:0,sbal:0},{name:"b",cbal:0,sbal:0},{name:"c",cbal:0,sbal:0},{name:"d",cbal:0,sbal:0},{name:"e",cbal:0,sbal:0},{name:"f",cbal:0,sbal:0},{name:"g",cbal:0,sbal:0},{name:"h",cbal:0,sbal:0},{name:"i",cbal:0,sbal:0},{name:"j",cbal:0,sbal:0},{name:"k",cbal:0,sbal:0},{name:"l",cbal:0,sbal:0}];
+			fetchAllaccounts();
+			function loadAccount(acc){
+				var el=document.getElementById("rightPallete");
+				el.innerHTML="<h4>Account Holder:</h4> "+accounts[acc].name+
+				"<br><h4>Account Number</h4>: "+ String(acc)+
+				"<br><h4>Savings Balance:</h4> "+String(accounts[acc].sbal)+
+				"<br><button class=\"transferButton\" onclick=\"sWidthdraw("+String(acc)+")\">Widthdraw</button>&Tab;<button class=\"transferButton\" onclick=\"sDeposit("+String(acc)+")\">Deposit</button><br><h4>Current Balance:</h4> "+String(accounts[acc].cbal)+
+				"<br><button class=\"transferButton\" onclick=\"cWidthdraw("+String(acc)+")\">widthdraw</button>&Tab;<button class=\"transferButton\" onclick=\"cDeposit("+String(acc)+")\">deposit</button><br>";
+			}
+			function addAccount(){
+				var n=prompt("enter the account holder name:");
+				if(isNaN(n)){
+					accounts.push({name:n,cbal:0,sbal:0});
+					fetchAllaccounts();
+				}
+				else
+				alert("invalid data");
+			}
+			function sWidthdraw(acc){
+				var a=prompt("Enter the amount:");
+				if(accounts[acc].sbal>=a && !isNaN(a)){
+					accounts[acc].sbal-=Number(a);
+					loadAccount(acc);
+				}
+				else
+					alert("invalid data");
+			}
+			function sDeposit(acc){
+				var a=prompt("Enter the amount:");
+				if(!isNaN(a)){
+					accounts[acc].sbal+=Number(a);
+					loadAccount(acc);
+				}
+				else
+					alert("invalid data");
+			}
+			function cWidthdraw(acc){
+				var a=prompt("Enter the amount:");
+				if(accounts[acc].cbal>=a && !isNaN(a)){
+					accounts[acc].cbal-=Number(a);
+					loadAccount(acc);
+				}
+				else
+					alert("invalid data");
+			}
+			function cDeposit(acc){
+				var a=prompt("Enter the amount:");
+				if(!isNaN(a)){
+					accounts[acc].cbal+=Number(a);
+					loadAccount(acc);
+				}
+				else
+					alert("invalid data");
+			}
+			function fetchAllaccounts(){
+				var el=document.getElementById("leftPallete1");
+				el.innerHTML="";
+				var ctr=0;
+				accounts.forEach(element => {
+					el.innerHTML=el.innerHTML+"<div class=\"listName\" id=\""+String(ctr++)+"\" onclick=\"loadAccount("+String(ctr-1)+")\">Account NO: "+String(ctr-1)+"</div>";
+				});
+			}
+		</script>
+	</body>
+</html>
