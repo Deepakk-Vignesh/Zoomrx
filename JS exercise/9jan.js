@@ -11,7 +11,7 @@ function getUnique(dataArray){
 }
 
 function removeValues(dataArray,removeArray){
-    dataArray.foreach((removeElement)=>{
+    removeArray.forEach((removeElement)=>{
         while(dataArray.indexOf(removeElement)>-1){
         	dataArray.splice(dataArray.indexOf(removeElement),1);
         }
