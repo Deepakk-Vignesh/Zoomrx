@@ -1,12 +1,12 @@
 function getUnique(dataArray){
     let dataArraySet = new Set(dataArray);
     dataArraySet = Array.from(dataArraySet);
-    return removeValues(dataArray,removeValues(dataArray,dataArray.filter((element)=>{
+    return removeValues(dataArray,dataArray.filter((element)=>{
         if(dataArraySet.indexOf(element)<=-1){
 	       return element;
 	   }
 	 dataArraySet.splice(dataArraySet.indexOf(element),1);
-    })));
+    }));
 }
 
 function removeValues(dataArray,removeArray){
