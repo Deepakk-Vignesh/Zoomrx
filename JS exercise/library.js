@@ -63,7 +63,7 @@ function addStudent(name){
 }
 
 function addBook(){
-	bookObjectArray.push(new Book(prompt("Enter Book's Name:"),prompt("Enter Edition:"),prompt("Enter Author's Name:"),prompt("Enter Count:")));
+	bookObjectArray.push(new Book(prompt("Enter Book's Name:"),prompt("Enter Edition:"),prompt("Enter Author's Name:"),Number(prompt("Enter Count:"))));
 }
 
 function borrowBook(studentId,bookId){
