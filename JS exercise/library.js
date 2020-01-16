@@ -55,6 +55,11 @@ class rentBookOrder {
 	get borrowerId(){
 		return this._borrowerId;
 	}
+	
+	get Details(){
+	        return `borrowerName : studentObjectArray[borrowerId].name
+borrowedBookDetails : bookObjectArray[bookId].Details`;
+	}
 
 }
 
