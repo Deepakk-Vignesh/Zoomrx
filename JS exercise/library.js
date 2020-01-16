@@ -57,8 +57,8 @@ class rentBookOrder {
 	}
 	
 	get Details(){
-	        return `borrowerName : studentObjectArray[borrowerId].name
-borrowedBookDetails : bookObjectArray[bookId].Details`;
+	        return `borrowerName : ${studentObjectArray[borrowerId].name}
+borrowedBookDetails : ${bookObjectArray[bookId].Details}`;
 	}
 
 }
