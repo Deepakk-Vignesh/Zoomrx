@@ -6,9 +6,9 @@ Array.prototype.cube = function () {
   return this.map((element) => element * element * element);
 };
 
-Array.prototype.getEven = function () {
-  return this.filter((element) => {
-    if(element % 2 == 0)
+Array.prototype.getDivisibles = function (divisor = 1) {
+  return this.filter((element , divisor) => {
+    if(element % divisor == 0)
     return element;
   });
 };
