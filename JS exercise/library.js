@@ -1,9 +1,7 @@
-let studentObjectArray = [];
-let rentedBookArray = [];
-let bookObjectArray = [];
 
 class Student {
 
+	static studentList = [];
 	constructor(name) {
 		this._name = name;
 	}
@@ -12,10 +10,14 @@ class Student {
 		return this._name;
 	}
 
+	static addStudent(name){
+		Student.studentList.push(new Student(prompt("Enter Student's Name:")));
+	}
+
 }
 
 class Book {
-
+	static bookList = [];
 	constructor(name,edition,author,count) {
 		this._name = name;
 		this._edition = edition;
@@ -38,14 +40,26 @@ class Book {
 	set count(count){
 		this._count = count;
 	}
+
+	static addBook(){
+		Book.bookList.push(new Book(prompt("Enter Book's Name:"),prompt("Enter Edition:"),prompt("Enter Author's Name:"),Number(prompt("Enter Count:"))));
+	}
+
+	static getAvailableBooks(){
+		return Book.bookList.filter((currentBook) => {
+			if(currentBook.count > 0)
+				return currentBook.Details;
+		}
+	);
+	}
 }
 
 class rentBookOrder {
-
+	static rentedList = [];
 	constructor(borrowerId,bookId) {
 		this._bookId = bookId;
 		this._borrowerId = borrowerId;
-		bookObjectArray[bookId].count = bookObjectArray[bookId].count-1;
+		Book.bookList[bookId].count = Number(Book.bookList.count-1);
 	}
 
 	get bookId(){
@@ -55,41 +69,24 @@ class rentBookOrder {
 	get borrowerId(){
 		return this._borrowerId;
 	}
-	
+
 	get Details(){
-	        return `borrowerName : ${studentObjectArray[borrowerId].name}
-borrowedBookDetails : ${bookObjectArray[bookId].Details}`;
+	        return `borrowerName : ${Student.studentList[this.borrowerId].name}
+borrowedBookDetails : ${Book.bookList[this.bookId].Details}`;
 	}
 
-}
-
-function addStudent(name){
-	studentObjectArray.push(new Student(prompt("Enter Student's Name:")));
-}
-
-function addBook(){
-	bookObjectArray.push(new Book(prompt("Enter Book's Name:"),prompt("Enter Edition:"),prompt("Enter Author's Name:"),Number(prompt("Enter Count:"))));
+	static getRentedBookDetails(){
+		return rentBookOrder.rentedList.map((currentOrder) => currentOrder.Details);
+	}
 }
 
 function borrowBook(studentId,bookId){
-	if(bookObjectArray[bookId].count > 0){
-		rentedBookArray.push(new rentBookOrder(studentId,bookId));
+	if(Book.bookList[bookId].count > 0){
+		rentBookOrder.rentedList.push(new rentBookOrder(studentId,bookId));
 	}
 }
 
 function returnBook(orderId){
-	bookObjectArray[rentedBookArray[orderId].bookId].count = bookObjectArray[rentedBookArray[orderId].bookId].count + 1;
-	rentedBookArray.splice(orderId,1);
-}
-
-function getAvailableBooks(){
-	return bookObjectArray.filter((currentBook) => {
-		if(currentBook.count > 0)
-			return currentBook.Details;
-	}
-);
-}
-
-function getRentedBookDetails(){
-	return rentedBookArray.forEach((currentOrder) => console.log(currentOrder.Details));
+	Book.bookList[rentBookOrder.rentedList[orderId].bookId].count = Number(Book.bookList[rentBookOrder.rentedList[orderId].bookId].count + 1);
+	rentBookOrder.rentedList.splice(orderId,1);
 }
