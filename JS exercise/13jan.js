@@ -14,27 +14,17 @@ Array.prototype.getEven = function () {
 };
 
 function getFrequencies(objectArgument){
-  let objectArgumentSet = new Set(objectArgument);
-  objectArgumentSet = Array.from(objectArgumentSet);
   let frequencyObject = {};
-  objectArgumentSet.forEach((element) => {
-   frequencyObject[element] = objectArgument.filter(
-     (filterElement)=>{
-       if(element == filterElement)
-        return filterElement;
-     }
-   ).length;
- });
+  objectArgument.forEach((element) => frequencyObject[element] = frequencyObject[element] + 1 || 1 );
    return frequencyObject;
 }
 
 function groupBy(objectArgument,property){
   let groupObject = {};
   objectArgument.forEach((element)=>{groupObject[element[property]]=[]});
-  objectArgument.forEach((element) => {
+  objectArgument.forEach((element,x=0) => {
     let groupTempProperty = element[property];
-    delete element[property];
-    groupObject[groupTempProperty].push(element);
+    groupObject[groupTempProperty][x++] = element;
   });
   return groupObject;
 }
