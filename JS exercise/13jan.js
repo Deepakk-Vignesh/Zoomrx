@@ -7,7 +7,7 @@ Array.prototype.cube = function () {
 };
 
 Array.prototype.getDivisibles = function (divisor = 1) {
-  return this.filter((element , divisor) => {
+  return this.filter((element) => {
     if(element % divisor == 0)
     return element;
   });
