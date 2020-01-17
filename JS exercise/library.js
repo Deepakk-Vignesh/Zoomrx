@@ -12,7 +12,7 @@ class Student {
 }
 
 class Book {
-	
+
 	constructor(name,edition,author,count) {
 		this._name = name;
 		this._edition = edition;
@@ -39,11 +39,11 @@ class Book {
 }
 
 class rentBookOrder {
-	
+
 	constructor(borrowerId,bookId) {
 		this._bookId = bookId;
 		this._borrowerId = borrowerId;
-		Book.bookList[bookId].count = Number(Book.bookList.count-1);
+		Librarian.bookList[bookId].count = Number(Librarian.bookList.count-1);
 	}
 
 	get bookId(){
@@ -55,12 +55,12 @@ class rentBookOrder {
 	}
 
 	get Details(){
-	        return `borrowerName : ${Student.studentList[this.borrowerId].name}
-borrowedBookDetails : ${Book.bookList[this.bookId].Details}`;
+	        return `borrowerName : ${Librarian.studentList[this.borrowerId].name}
+borrowedBookDetails : ${Librarian.bookList[this.bookId].Details}`;
 	}
 
 	static getRentedBookDetails(){
-		return rentBookOrder.rentedList.map((currentOrder) => currentOrder.Details);
+		return Librarian.rentedList.map((currentOrder) => currentOrder.Details);
 	}
 }
 
@@ -69,22 +69,22 @@ class Librarian{
 	static rentedList = [];
 	static studentList = [];
 	static createRentOrder(studentId,bookId){
-		if(Book.bookList[bookId].count > 0){
-			rentBookOrder.rentedList.push(new rentBookOrder(studentId,bookId));
+		if(Librarian.bookList[bookId].count > 0){
+			Librarian.rentedList.push(new rentBookOrder(studentId,bookId));
 		}
 	}
 
 	static closeOrder(orderId){
-		Book.bookList[rentBookOrder.rentedList[orderId].bookId].count = Number(Book.bookList[rentBookOrder.rentedList[orderId].bookId].count + 1);
-		rentBookOrder.rentedList.splice(orderId,1);
+		Librarian.bookList[Librarian.rentedList[orderId].bookId].count = Number(Librarian.bookList[Librarian.rentedList[orderId].bookId].count + 1);
+		Librarian.rentedList.splice(orderId,1);
 	}
-	
+
 	static addBook(){
-		Book.bookList.push(new Book(prompt("Enter Book's Name:"),prompt("Enter Edition:"),prompt("Enter Author's Name:"),Number(prompt("Enter Count:"))));
+		Librarian.bookList.push(new Book(prompt("Enter Book's Name:"),prompt("Enter Edition:"),prompt("Enter Author's Name:"),Number(prompt("Enter Count:"))));
 	}
 
 	static getAvailableBooks(){
-		return Book.bookList.filter((currentBook) => {
+		return Librarian.bookList.filter((currentBook) => {
 			if(currentBook.count > 0)
 				return currentBook.Details;
 		}
@@ -92,6 +92,6 @@ class Librarian{
 	}
 
 	static addStudent(name){
-		Student.studentList.push(new Student(prompt("Enter Student's Name:")));
+		Librarian.studentList.push(new Student(prompt("Enter Student's Name:")));
 	}
 }
