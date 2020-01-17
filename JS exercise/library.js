@@ -80,13 +80,16 @@ borrowedBookDetails : ${Book.bookList[this.bookId].Details}`;
 	}
 }
 
-function borrowBook(studentId,bookId){
-	if(Book.bookList[bookId].count > 0){
-		rentBookOrder.rentedList.push(new rentBookOrder(studentId,bookId));
-	}
-}
+class Librarian{
 
-function returnBook(orderId){
-	Book.bookList[rentBookOrder.rentedList[orderId].bookId].count = Number(Book.bookList[rentBookOrder.rentedList[orderId].bookId].count + 1);
-	rentBookOrder.rentedList.splice(orderId,1);
+	static createRentOrder(studentId,bookId){
+		if(Book.bookList[bookId].count > 0){
+			rentBookOrder.rentedList.push(new rentBookOrder(studentId,bookId));
+		}
+	}
+
+	static closeOrder(orderId){
+		Book.bookList[rentBookOrder.rentedList[orderId].bookId].count = Number(Book.bookList[rentBookOrder.rentedList[orderId].bookId].count + 1);
+		rentBookOrder.rentedList.splice(orderId,1);
+	}
 }
