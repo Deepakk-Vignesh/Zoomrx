@@ -1,7 +1,6 @@
 
 class Student {
 
-	static studentList = [];
 	constructor(name) {
 		this._name = name;
 	}
@@ -13,7 +12,7 @@ class Student {
 }
 
 class Book {
-	static bookList = [];
+	
 	constructor(name,edition,author,count) {
 		this._name = name;
 		this._edition = edition;
@@ -40,7 +39,7 @@ class Book {
 }
 
 class rentBookOrder {
-	static rentedList = [];
+	
 	constructor(borrowerId,bookId) {
 		this._bookId = bookId;
 		this._borrowerId = borrowerId;
@@ -66,7 +65,9 @@ borrowedBookDetails : ${Book.bookList[this.bookId].Details}`;
 }
 
 class Librarian{
-
+	static bookList = [];
+	static rentedList = [];
+	static studentList = [];
 	static createRentOrder(studentId,bookId){
 		if(Book.bookList[bookId].count > 0){
 			rentBookOrder.rentedList.push(new rentBookOrder(studentId,bookId));
