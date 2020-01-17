@@ -41,17 +41,6 @@ class Book {
 		this._count = count;
 	}
 
-	static addBook(){
-		Book.bookList.push(new Book(prompt("Enter Book's Name:"),prompt("Enter Edition:"),prompt("Enter Author's Name:"),Number(prompt("Enter Count:"))));
-	}
-
-	static getAvailableBooks(){
-		return Book.bookList.filter((currentBook) => {
-			if(currentBook.count > 0)
-				return currentBook.Details;
-		}
-	);
-	}
 }
 
 class rentBookOrder {
@@ -91,5 +80,17 @@ class Librarian{
 	static closeOrder(orderId){
 		Book.bookList[rentBookOrder.rentedList[orderId].bookId].count = Number(Book.bookList[rentBookOrder.rentedList[orderId].bookId].count + 1);
 		rentBookOrder.rentedList.splice(orderId,1);
+	}
+	
+	static addBook(){
+		Book.bookList.push(new Book(prompt("Enter Book's Name:"),prompt("Enter Edition:"),prompt("Enter Author's Name:"),Number(prompt("Enter Count:"))));
+	}
+
+	static getAvailableBooks(){
+		return Book.bookList.filter((currentBook) => {
+			if(currentBook.count > 0)
+				return currentBook.Details;
+		}
+	);
 	}
 }
