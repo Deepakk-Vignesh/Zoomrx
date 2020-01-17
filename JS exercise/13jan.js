@@ -20,7 +20,7 @@ function getFrequencies(objectArgument){
 }
 
 function groupBy(objectArgument,property){
-  let groupObject = {}
+  let groupObject = {};
   objectArgument.forEach((element) => {
     let groupTempProperty = element[property];
     groupObject[groupTempProperty] = groupObject[groupTempProperty] ? [...groupObject[groupTempProperty],element] : [element];
