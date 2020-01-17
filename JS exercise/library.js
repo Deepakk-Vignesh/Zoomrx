@@ -10,10 +10,6 @@ class Student {
 		return this._name;
 	}
 
-	static addStudent(name){
-		Student.studentList.push(new Student(prompt("Enter Student's Name:")));
-	}
-
 }
 
 class Book {
@@ -92,5 +88,9 @@ class Librarian{
 				return currentBook.Details;
 		}
 	);
+	}
+
+	static addStudent(name){
+		Student.studentList.push(new Student(prompt("Enter Student's Name:")));
 	}
 }
